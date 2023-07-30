@@ -2,8 +2,7 @@
   <div
     :class="`${task.completed ? 'bg-gray-200 ' : 'bg-blue-200 shadow-md'} w-full p-3 rounded my-2 flex justify-between`">
     <div class="flex justify-start space-x-3">
-      <input type="checkbox">
-      <!-- <input type="checkbox" v-model="task.completed" @change="toggleComplete" /> -->
+      <input type="checkbox" v-model="task.completed" @change="toggleComplete" />
       <span :class="{ 'completed-task line-through uppercase font-semibold text-sm text-400': task.completed }">
         {{ task.text }}
       </span>
@@ -31,15 +30,15 @@
 export default {
   props: ['task'],
   methods: {
-    toggleComplete() {
-      this.$emit('toggle');
+    toggleTask(task) {
+      task.completed = !task.completed;
     },
     editTask() {
-      this.$emit('edit');
+      this.$emit('edit')
     },
     deleteTask() {
-      this.$emit('delete');
+      this.$emit('delete')
     },
   },
-};
+}
 </script>

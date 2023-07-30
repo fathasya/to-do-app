@@ -48,7 +48,10 @@ export default {
   },
   computed: {
     filteredTasks() {
-      return this.tasks.filter((task) => task.text.toLowerCase().includes(this.searchQuery.toLowerCase()))
+      const filtered = this.tasks.filter((task) =>
+        task.text.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+      return filtered;
     },
   },
   methods: {
@@ -63,7 +66,9 @@ export default {
       this.tasks = this.tasks.filter((t) => t.id !== task.id)
     },
     toggleTask(task) {
+      console.log("Toggle Task:", task); // Add this line to check the task object being toggled
       task.completed = !task.completed
+      console.log("Updated Task:", task); // Add this line to check the task object after toggling
     },
     openEditModal(task) {
       this.editedTask = { ...task }
